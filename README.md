@@ -1,8 +1,8 @@
-# Neo Geo IPS Patcher
+# Neo-Geo IPS Patcher ( • )( • )ԅ(‾⌣‾ԅ)
 
 ## 🔧 What is this?
 
-This is a custom **IPS patcher** for the ROM modifications you can find on this account.  
+A standalone **IPS patcher** for the Neo Geo ROM modifications you can find on this account.  
 It provides a simple way for users to apply `.ips` patches with a clickable `.exe`, no command line required.
 
 - Written in Python (`apply_patch.py`)  
@@ -12,6 +12,8 @@ It provides a simple way for users to apply `.ips` patches with a clickable `.ex
   - Expected output ROM CRC32
   - Output file name
   - Notes / description
+
+Alternatively, you can use the extremely capable [FLIPS](https://github.com/Alcaro/Flips).
 
 ⚠️ **No ROMs are included**. You must supply your own, legally obtained ROMs.
 
