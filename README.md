@@ -1,4 +1,4 @@
-# Neo-Geo IPS Patcher ( • )( • )ԅ(‾⌣‾ԅ)
+# Neo-Geo IPS Patcher ( • )( • )ԅ(¬‿¬ԅ)
 
 ## 🔧 What is this?
 
