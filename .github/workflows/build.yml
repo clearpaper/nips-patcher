@@ -1,0 +1,49 @@
+name: Build and Release apply_patch.exe
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4   # https://github.com/actions/checkout
+
+      - name: Set up Python
+        uses: actions/setup-python@v5   # https://github.com/actions/setup-python
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyinstaller
+
+      - name: Build EXE with PyInstaller
+        run: pyinstaller --onefile src/apply_patch.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4   # https://github.com/actions/upload-artifact
+        with:
+          name: apply_patch-exe
+          path: dist/apply_patch.exe
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4   # https://github.com/actions/download-artifact
+        with:
+          name: apply_patch-exe
+          path: .
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2   # https://github.com/softprops/action-gh-release
+        with:
+          files: apply_patch.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
