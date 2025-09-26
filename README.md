@@ -51,7 +51,7 @@ Alternatively, you can use the `.ips` patches with these well-established IPS Pa
 
 ### Output ROM:
 - Filename: `uni-bios_4_0_PnM.rom`  
-- Expected CRC32: `078E2043`  
+- Expected CRC32: `B204F293`  
 
 ### Steps:
 1. Run `nips.exe`.  
