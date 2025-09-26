@@ -4,12 +4,14 @@
 ## 🔧 What is this?
 
 A standalone **IPS patcher** for the Neo Geo ROM modifications you can find on this account.  
-Use it It provides a simple way for users to apply `.ips` patches with a clickable `.exe`, no command line required.
+It provides a simple way for users to apply `.ips` patches with a clickable `.exe`, no command line required.
 
 - Written in Python (`nips.py`)  
 - Built into a standalone Windows binary (`nips.exe`)  
 
-⚠️ **No ROMs are included**. You must supply your own, legally obtained ROMs.
+Alternatively, you can use the `.ips` patches with these well-established IPS Patchers:  
+- Lunar IPS - https://www.romhacking.net/utilities/240  
+- Floating IPS - https://github.com/Alcaro/Flips
 
 
 ## 🕹️ For End Users
@@ -92,5 +94,5 @@ MIT License — see [LICENSE](LICENSE).
 ---
 
 ## ⚖️ Legal
-This tool applies patches only.  
+This tool applies patches only.  **No ROMs are included.**  
 It does not contain, distribute, or endorse sharing of copyrighted ROMs or BIOS images.  
