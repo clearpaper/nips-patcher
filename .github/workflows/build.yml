@@ -1,4 +1,4 @@
-name: Build and Release apply_patch.exe
+name: Build and Release nips.exe
 
 on:
   push:
