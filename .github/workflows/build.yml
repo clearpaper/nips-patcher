@@ -22,13 +22,13 @@ jobs:
         run: pip install pyinstaller
 
       - name: Build EXE with PyInstaller
-        run: pyinstaller --onefile src/apply_patch.py
+        run: pyinstaller --onefile src/nips.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4   # https://github.com/actions/upload-artifact
         with:
-          name: apply_patch-exe
-          path: dist/apply_patch.exe
+          name: nips-exe
+          path: dist/nips.exe
 
   release:
     needs: build
@@ -38,12 +38,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4   # https://github.com/actions/download-artifact
         with:
-          name: apply_patch-exe
+          name: nips-exe
           path: .
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2   # https://github.com/softprops/action-gh-release
         with:
-          files: apply_patch.exe
+          files: nips.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

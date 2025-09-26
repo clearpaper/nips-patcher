@@ -1,68 +1,43 @@
-# Neo-Geo IPS Patcher ( • )( • )ԅ(¬‿¬ԅ)
+# Neo-Geo IPS Patcher ԅ(¬‿¬ԅ)
+
 
 ## 🔧 What is this?
 
 A standalone **IPS patcher** for the Neo Geo ROM modifications you can find on this account.  
-It provides a simple way for users to apply `.ips` patches with a clickable `.exe`, no command line required.
+Use it It provides a simple way for users to apply `.ips` patches with a clickable `.exe`, no command line required.
 
-- Written in Python (`apply_patch.py`)  
-- Built into a standalone Windows binary (`apply_patch.exe`)  
-- Each patch repo contains an `.ips` patch and a companion `.json` file that defines:
-  - Expected input ROM CRC32
-  - Expected output ROM CRC32
-  - Output file name
-  - Notes / description
-
-Alternatively, you can use the extremely capable [FLIPS](https://github.com/Alcaro/Flips).
+- Written in Python (`nips.py`)  
+- Built into a standalone Windows binary (`nips.exe`)  
 
 ⚠️ **No ROMs are included**. You must supply your own, legally obtained ROMs.
 
----
 
 ## 🕹️ For End Users
 
 ### Usage:
 
-1. **Download `apply_patch.exe`**  
-   - Go to the [Releases page](../../releases) and download the latest `apply_patch.exe`.  
+1. **Download `nips.exe`**  
+   - Go to the [Releases page](../../releases) and download the latest `nips.exe`.  
+     (As it's an exe file, it may trigger your browser's protection logic. In any case, always virus-scan any downloaded exe file before running.)  
 
 2. **Download a patch package**  
-   - Each patch repo (for example, `unibios-4.0-pnm`) provides its own `.ips` and `.json` files inside a ZIP release.  
+   - Each patch repository, e.g. [Universe BIOS 4.0 PICKnMIX Patch](https://github.com/clearpaper/uni-bios_4_0_PnM), has `.ips` and `.json` files inside a ZIP release.  
    - Extract the ZIP so you have access to the patch files.
 
-3. **Run the patcher**  
-   - Double-click `apply_patch.exe`.  
+3. **Run `nips.exe`**  
+   - Double-click `nips.exe`.  
    - When prompted, select the `.json` patch file you want to apply.
 
 4. **Select the input ROM**  
-   - Choose the original `.rom` or `.bin` file that the patch expects.  
-   - The patcher will check the input ROM's CRC32 checksum against the required patch CRC32 checksum.  
-   - If it doesn’t match, you’ll see an error.
+   - When prompted, select the original file that the patch expects, typically with `.rom` or `.bin` extensions, e.g. `uni-bios_4_0.rom`.  
+   - `nips.exe` will check the input ROM's CRC32 checksum against the required one and will display an error if it does not match.
 
-5. **Get the patched ROM**  
-   - If the CRC32 matches, the patcher will apply the changes and create a new ROM file.  
-   - The name of the output file is defined in the patch’s `.json` (for example, `uni-bios_4_0_PnM.rom`).
+5. **Patched ROM generated**  
+   - If the CRC32 matches, the `nips.exe` will apply the changes and create a new ROM file with the name as defined in the `.json` file, e.g. `uni-bios_4_0_PnM.rom`.
+   - `nips.exe` will check the output ROM's CRC32 checksum against the expected one and will display an error if it does not match.  
 
-6. **Verify the patched ROM**  
-   - The patcher will check the output ROM's CRC32 checksum against the expected patch CRC32 checksum.  
-   - If it doesn’t match, you’ll see an error.
-
-7. **Done!**  
-   - Use the patched ROM in your emulator or hardware setup.
-
----
 
 ## 🚀 Example: Universe BIOS 4.0 PICKnMIX Patch
-
-### Features:
-
-A. *On cold boot*
-   1. runs PICKnMIX mode by default, OR
-   2. runs original 161-in-1 Game Select Menu (GSM) by holding Player 1 START button  
-
-B. *Warm reset. While cursor on "SOFT REBOOT SYSTEM" of "IN GAME MENU"*  
-   1. press A button resets current game, allowing game re-selection through PICKnMIX mode, OR
-   2. press A button while holding START resets to 161-in-1 GSM.
 
 ### Patch files:
 - `uni-bios_4_0_PnM_patch.ips`  
@@ -77,25 +52,23 @@ B. *Warm reset. While cursor on "SOFT REBOOT SYSTEM" of "IN GAME MENU"*
 - Expected CRC32: `078E2043`  
 
 ### Steps:
-1. Run `apply_patch.exe`.  
+1. Run `nips.exe`.  
 2. Select `uni-bios_4_0_PnM_patch.json`.  
 3. Select your `uni-bios_4_0.rom`  
-4. The patcher creates `uni-bios_4_0_PnM.rom`.  
+4. `nips.exe` creates `uni-bios_4_0_PnM.rom`.  
 
----
 
 ## ❓ Troubleshooting
-- **CRC mismatch error:** Your ROM isn’t the correct version. Check that it matches the expected input CRC32.  
-- **No patched file appears:** Ensure you have permission to write in the folder where you ran `apply_patch.exe`.  
-- **Output CRC32 doesn’t match:** The patch may not have been applied correctly. Redownload the patch package and try again.  
+- **Input CRC mismatch error:** Your ROM isn’t the correct version. Check that it matches the expected input CRC32.  
+- **No patched file appears:** Ensure you have permission to write in the folder that contains the `json` and `ips` files.   
+- **Output CRC32 mismatch error:** The patch may not have been applied correctly. Redownload the patch package and try again.  
 
----
 
 ## 🛠 For Developers
 
-You can run `apply_patch.py` directly or build the `apply_patch.exe` yourself:
+You can run `nips.py` directly or build the `nips.exe` yourself:
 
-### Requirements
+### Build Requirements
 - Python 3.10+  
 - [PyInstaller](https://pyinstaller.org)  
 
@@ -105,10 +78,10 @@ Run these commands in a terminal:
 
 ```
 pip install pyinstaller
-pyinstaller --onefile src/apply_patch.py
+pyinstaller --onefile src/nips.py
 ```
 
-Result: `dist/apply_patch.exe`
+Result: `dist/nips.exe`
 
 ---
 
